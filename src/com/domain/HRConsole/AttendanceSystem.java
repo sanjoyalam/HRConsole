@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class AttendanceSystem {
 
@@ -73,7 +74,7 @@ public class AttendanceSystem {
 		List<LogRecord> logRecords = new LinkedList<LogRecord>();
 		Iterator it = employeeAttendance.entrySet().iterator();
 		while (it.hasNext()) {
-			HashMap.Entry<Integer, Attendance> pair = (HashMap.Entry) it.next();
+			Map.Entry<Employee, Attendance> pair = (Map.Entry) it.next();
 			List<LogRecord> empAttd = pair.getValue().getLogRecords();
 			for (int i = 0; i < empAttd.size(); i++) {
 				if (empAttd.get(i).getLogin().getDay() == attendanceDate.getDay() &&
@@ -90,7 +91,7 @@ public class AttendanceSystem {
 		List<LogRecord> logRecords = new LinkedList<LogRecord>();
 		Iterator it = employeeAttendance.entrySet().iterator();
 		while (it.hasNext()) {
-			HashMap.Entry<Employee, Attendance> pair = (HashMap.Entry) it.next();
+			Map.Entry<Employee, Attendance> pair = (Map.Entry) it.next();
 			if (pair.getKey().empId == employeeId) {
 				List<LogRecord> empAttd = pair.getValue().getLogRecords();
 				for (int i = 0; i < empAttd.size(); i++) {
@@ -109,7 +110,7 @@ public class AttendanceSystem {
 		List<LogRecord> logRecords = new LinkedList<LogRecord>();
 		Iterator it = employeeAttendance.entrySet().iterator();
 		while (it.hasNext()) {
-			HashMap.Entry<Employee, Attendance> pair = (HashMap.Entry) it.next();
+			Map.Entry<Employee, Attendance> pair = (Map.Entry) it.next();
 			if (pair.getKey().getDeptId() == departmentId) {
 				List<LogRecord> empAttd = pair.getValue().getLogRecords();
 				for (int i = 0; i < empAttd.size(); i++) {
@@ -127,7 +128,7 @@ public class AttendanceSystem {
 		List<LogRecord> logRecords = new LinkedList<LogRecord>();
 		Iterator it = employeeAttendance.entrySet().iterator();
 		while (it.hasNext()) {
-			HashMap.Entry<Employee, Attendance> pair = (HashMap.Entry) it.next();
+			Map.Entry<Employee, Attendance> pair = (Map.Entry) it.next();
 			List<LogRecord> empAttd = pair.getValue().getLogRecords();
 			for (int i = 0; i < empAttd.size(); i++) {
 				if (empAttd.get(i).getLogType() == LogType.PTO_HOURS &&
