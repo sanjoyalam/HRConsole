@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.domain.HRConsole.Contractor;
 import com.domain.HRConsole.Employee;
 import com.domain.HRConsole.LogRecord;
 
@@ -101,13 +102,26 @@ public class HRDao {
 		try {
 			ConnectDB con = ConnectDB.getInstance();
 			conn = con.getConnection();
-			pst = conn.prepareStatement("insert into employee (empName,salary,gradeId,empType,departId,designation) values (?,?,?,?,?,?)");
+			pst = conn.prepareStatement("insert into employee (empName,salary,gradeId,empType,departId,designation,address,city,state,zipcode) values (?,?,?,?,?,?,?,?,?,?)");
 			pst.setString(1, emp.getName());
 			pst.setDouble(2, emp.getSalary());
 			pst.setString(3, emp.getGrade());
 			pst.setString(4, emp.getEmpType());
 			pst.setInt(5, emp.getDeptId());
 			pst.setString(6, emp.getDesig());
+			pst.setString(7, emp.getAddress());
+			pst.setString(8, emp.getCity());
+			pst.setString(9, emp.getState());
+			pst.setInt(10, emp.getZipcode());
+
+			if (emp.getEmpType().equals("CONTRACTOR")){
+				Contractor cont = (Contractor) emp;
+				pst = conn.prepareStatement("insert into contractor (empId,hourly_rate, cont_from, cont_thru) values (?,?,?,?)");
+				pst.setInt(1, cont.getEmpId());
+				pst.setFloat(2, cont.getHourlyRate());
+				pst.setDate(3, new Date(cont.getContFromDate().getTime()));
+				pst.setDate(4, new Date(cont.getContThruDate().getTime()));
+			}
 
 			count = pst.executeUpdate();
 
@@ -175,4 +189,5 @@ public class HRDao {
 		}
 		return status;
 	}
+
 }
