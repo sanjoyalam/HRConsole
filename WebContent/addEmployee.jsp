@@ -116,7 +116,7 @@
 			</tr>
 			<tr>
 				<td><input type="submit" name="addEmployee" value="Add" /></td>
-				<td><input type="submit" value="Main Menu"
+				<td><input type="button" value="Main Menu"
 					onclick="goToMainMenu()" /></td>
 			</tr>
 		</table>

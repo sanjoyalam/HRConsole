@@ -52,6 +52,17 @@
 		<servlet-name>timeLog</servlet-name>
 		<url-pattern>/TimeLogServlet</url-pattern>
 	</servlet-mapping>
+	
+		<servlet>
+		<servlet-name>search</servlet-name>
+		<servlet-class>com.servlet.HRConsole.SearchServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>search</servlet-name>
+		<url-pattern>/SearchServlet</url-pattern>
+	</servlet-mapping>
+	
 
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
